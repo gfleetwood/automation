@@ -1,0 +1,29 @@
+name: ghub-sms-notify
+
+on: 
+  [push]
+  #schedule:
+  #- cron: '5 * * * *' # runs at 12:00 UTC everyday
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout And Setup
+        uses: actions/checkout@v2
+      - name: send text
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7.7'
+      - name: Install Packages And Run App
+        run: |
+          pip install -r requirements.txt
+          python app.py
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          CELL_PROVIDER_PHONE_NUM: ${{ secrets.CELL_PROVIDER_PHONE_NUM }}
+          PHONE_NUM: ${{ secrets.PHONE_NUM }} 
+          GHUB: ${{ secrets.GHUB }}
+
+
