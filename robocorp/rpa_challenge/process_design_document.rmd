@@ -1,0 +1,109 @@
+---
+title: "Process Design Document"
+subtitle: 'ABC Inc.'
+output:
+  pdf_document: default
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(magrittr)
+```
+
+# Submit Personal Data Into Online Form
+
+## Versioning
+
+You should set up your process definition document so that it is easy to update and to archive. If you are not using a versioning system, we recommend at last to add the version in the file name and adding a table inside the document to show the current and previous versions.
+
+```{r, echo = F}
+tibble::tribble(
+~Date,       ~Version, ~Author,
+"2023-10-10", 1.0, "John Doe"
+) %>% knitr::kable()
+```
+
+## Signed Off By
+
+```{r, echo = F}
+tibble::tribble(
+~Name,       ~Function, ~Responsibility,
+"John Doe", "RPA Developer", "Develop and maintain automations"
+) %>% knitr::kable()
+```
+
+## Contributors
+
+```{r, echo = F}
+tibble::tribble(
+~Name,       ~Function, ~Responsibility,
+"John Doe", "RPA Developer", "Develop and maintain automations",
+"Jane Doe", "HR", "N/A",
+) %>% knitr::kable()
+```
+
+## Current Process Analysis
+
+### Description
+
+Here you should give an overview of the process. What is this process for? How often do they run it? When do they run it? Who runs it? What are the steps? This overview description should be crystal clear and not too long to read.
+
+The process enters data for Company Name, Address, Email, Phone Number, Role In Company, First Name, and Last Name for several people into an online form one by one. The source of this data is on the same site as the form.
+
+In the process' manual state the user:
+
+- Downloads an excel file from <https://rpachallenge.com/>
+- Opens the excel file
+- Presses the start button on the same site
+- Enters the aforementioned information into the form for each person, clicking the Submit button after filling out each form.
+
+### Systems Involved
+
+Processes that are a good fit to be automated by RPA often span across different systems. For example, one could be a web application, another a legacy system, or even just a spreadsheet. List in this section the systems involved, don't forget to explain what they are used for and if the user needs to have special authorization roles or rights, because the robot will probably need to have them as well!
+
+For our example, we will have Excel and the website listed here.
+
+```{r, echo = F}
+tibble::tribble(
+~System,       ~`Used For`, ~`User Role Needed`,
+"Microsoft Excel", "Getting the data to enter into the form", "The employee must download it from the site",
+"Website (https://rpachallenge.com/)", "Place to download the data, and location of the form to enter the data in", "N/A",
+) %>% knitr::kable()
+```
+
+### Process Flow
+
+One of the best ways to show the steps of a process is via a flowchart, a widely used convention when describing procedures and algorithms. There is a variety of software to easily create flow charts: good options for example are Diagrams.net (free) or Lucidchart (free with paid option), or Microsoft Visio (paid).
+
+![](images/process_flow.png)
+
+### Detailed Steps
+
+This section of the process definition document is the crucial one: here, you will break down the process into all its steps, and for each one, you will provide all the information needed.
+
+Try to imagine that you are explaining this to someone that knows nothing about the process: after they have read your instructions, they should be able to complete the process on their own.
+
+In the description of each step, you are free to add anything that you think will help explain it better: for example, screenshots of the user interface, the schema of the data involved, etc.
+
+A good name for a step for example is in the format operator-action-object of the action. For example: "Employee adds product to shopping cart".
+
+- Downloads an excel file from https://rpachallenge.com
+- Opens the excel file
+- Presses the start button on the same site
+- Enters the aforementioned information into the form for each person, clicking the Submit button after filling out each form.
+
+## Possible Exceptions
+
+### Logic Exceptions
+
+Logic exceptions happen when something is wrong with the information that is being processed. For example, if an order has incomplete data, the operation has to stop. Or maybe the business requires certain rules that the operator knows about: "do not sell more than ten pieces a day for that product". These need to be written down carefully because the robot will have to follow the same rules.
+
+There are none.
+
+### System Exceptions
+
+Software can have bugs, network connections can fail, passwords can no longer be valid: in all these cases, we say that a system exception has happened. Write down all these possible cases, explain what the operator sees, and if there are ways to get around them.
+
+There are none.
