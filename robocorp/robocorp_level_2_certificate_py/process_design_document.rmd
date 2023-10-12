@@ -1,130 +1,109 @@
 ---
-title: "PDD Template"
-output: pdf_document
+title: "Order Robots Process Design Document"
+subtitle: 'ABC Inc.'
+output:
+  pdf_document: default
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-library(DiagrammeR)
-
-grViz("
-digraph boxes_and_circles {
-
-  # a 'graph' statement
-  graph [overlap = true, fontsize = 10]
-
-  # several 'node' statements
-  node [shape = box,
-        fontname = Helvetica]
-  A; B; C; D; E; F
-
-  node [shape = circle,
-        fixedsize = true,
-        width = 0.9] // sets as circles
-  1; 2; 3; 4; 5; 6; 7; 8
-
-  # several 'edge' statements
-  A->1 B->2 B->3 B->4 C->A
-  1->D E->A 2->4 1->5 1->F
-  E->6 4->6 5->7 6->7 3->8
-}
-")
+library(magrittr)
+library(tibble)
 ```
 
-## Process Name
-
-First of all, we need to come up with a name to identify the process. The Business might have a name for it already. In our case, we have gone for "Batch phone order processing".
-
-## Metadata
-
-### Versioning
+# Versioning
 
 You should set up your process definition document so that it is easy to update and to archive. If you are not using a versioning system, we recommend at last to add the version in the file name and adding a table inside the document to show the current and previous versions.
 
-### Sign Off
-
-The information contained in the process definition document is part of the specification that will be used to develop the software robot, so it must be verified to be accurate and signed off by the business side.
-
-In our example, we might require the sign-off of the person responsible for orders at Swag Labs.
-
-### Contributors
-
-List the people that have collaborated in creating the process definition document. It will be useful to record the key people on the business side that know about the process also in the future.
-
-In our example, we would list ourselves and the Swag Labs employees that helped us collect the information.
-
-## Process Analysis
-
-This section is where you will use your analysis skills to describe how the client is handling the process now before you move in and optimize and automate it like a pro.
-
-What are the steps that someone inside the company has to do each time to make this process work? What software do they have to use? Where do they get the information they need? What happens if something goes wrong? All these questions need to be answered in this section.
-
-### Description
-
-Here you should give an overview of the process. What is this process for? How often do they run it? When do they run it? Who runs it? What are the steps?
-
-This overview description should be crystal clear and not too long to read.
-
-### Systems Involved
-
-Processes that are a good fit to be automated by RPA often span across different systems. For example, one could be a web application, another a legacy system, or even just a spreadsheet.
-
-List in this section the systems involved, don't forget to explain what they are used for and if the user needs to have special authorization roles or rights, because the robot will probably need to have them as well!
-
-For our example, we will have Excel and the website listed here.
-
-### Process Flow
-
-One of the best ways to show the steps of a process is via a flowchart, a widely used convention when describing procedures and algorithms.
-
-There is a variety of software to easily create flow charts: good options for example are Diagrams.net (free) or Lucidchart (free with paid option), or Microsoft Visio (paid).
-
-```{r}
-grViz("
-digraph boxes_and_circles {
-
-  # a 'graph' statement
-  graph [overlap = true, fontsize = 10]
-
-  # several 'node' statements
-  node [shape = box,
-        fontname = Helvetica]
-  A; B; C; D; E; F
-
-  node [shape = circle,
-        fixedsize = true,
-        width = 0.9] // sets as circles
-  1; 2; 3; 4; 5; 6; 7; 8
-
-  # several 'edge' statements
-  A->1 B->2 B->3 B->4 C->A
-  1->D E->A 2->4 1->5 1->F
-  E->6 4->6 5->7 6->7 3->8
-}
-")
+```{r, echo = F}
+tibble::tribble(
+~Date,       ~Version, ~Author,
+"2023-10-10", 1.0, "John Doe"
+) %>% knitr::kable()
 ```
 
+# Signed Off By
 
-### Steps
+```{r, echo = F}
+tibble::tribble(
+~Name,       ~Function, ~Responsibility,
+"John Doe", "RPA Developer", "Develop and maintain automations"
+) %>% knitr::kable()
+```
+
+# Contributors
+
+```{r, echo = F}
+tibble::tribble(
+~Name,       ~Function, ~Responsibility,
+"John Doe", "RPA Developer", "Develop and maintain automations",
+"Jane Doe", "HR", "N/A",
+) %>% knitr::kable()
+```
+
+# Current Process Analysis
+
+## Description
+
+To execute this process the user:
+
+* Orders robots from RobotSpareBin Industries Inc.
+* Saves the order HTML receipt as a PDF file.
+* Saves the screenshot of the ordered robot.
+* Embeds the screenshot of the robot to the PDF receipt.
+* Creates a ZIP archive of the receipts and the images.
+
+## Systems Involved
+
+```{r, echo = F}
+tibble::tribble(
+~System, ~`Used For`, ~`User Role Needed`,
+"Microsoft Excel", "Getting the data to order the robots", "The employee must download it from the site",
+"Website (https://robotsparebinindustries.com/#/)", "Site to place the orders", "N/A",
+) %>% knitr::kable()
+```
+
+## Process Flow
+
+One of the best ways to show the steps of a process is via a flowchart, a widely used convention when describing procedures and algorithms. There is a variety of software to easily create flow charts: good options for example are Diagrams.net (free) or Lucidchart (free with paid option), or Microsoft Visio (paid).
+
+![](images/process_flow.png)
+## Steps
 
 This section of the process definition document is the crucial one: here, you will break down the process into all its steps, and for each one, you will provide all the information needed.
 
 Try to imagine that you are explaining this to someone that knows nothing about the process: after they have read your instructions, they should be able to complete the process on their own.
 
-A good name for a step for example is in the format <operator> <action> <object of the action>. For example: "Employee adds product to shopping cart". This is not a hard rule though, just make sure that the name clearly and concisely describes the step.
-
 In the description of each step, you are free to add anything that you think will help explain it better: for example, screenshots of the user interface, the schema of the data involved, etc.
 
-## Possible Exceptions
+A good name for a step for example is in the format operator-action-object of the action. For example: "Employee adds product to shopping cart".
 
-So far, you have been describing an ideal case where the operator has all the data they need, all systems work perfectly together, and the end result is achieved.
+**Orders robots from RobotSpareBin Industries Inc.**
 
-This is not always the case: there are times where the process does not run that smoothly, or it cannot be completed for various reasons: we call these cases "Exceptions".
+**Saves the order HTML receipt as a PDF file**
 
-Exceptions can be of two types:
+**Saves the screenshot of the ordered robot**
 
-Logic exceptions: Logic exceptions happen when something is wrong with the information that is being processed. For example, if an order has incomplete data, the operation has to stop. Or maybe the business requires certain rules that the operator knows about: "do not sell more than ten pieces a day for that product". These need to be written down carefully because the robot will have to follow the same rules.
+**Embeds the screenshot of the robot to the PDF receipt**
 
-System exceptions: Software can have bugs, network connections can fail, passwords can no longer be valid: in all these cases, we say that a system exception has happened. Write down all these possible cases, explain what the operator sees, and if there are ways to get around them.
+**Creates a ZIP archive of the receipts and the images**
+
+**Hold**
+
+Alethea
+
+# Possible Exceptions
+
+## Logic Exceptions
+
+There are none.
+
+## System Exceptions
+
+The order submission can fail at random but that is accounted for in the automation implementation.
+
+
+
+
