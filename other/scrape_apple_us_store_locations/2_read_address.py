@@ -25,7 +25,6 @@ def get_address_and_phone(index, url):
     except:
         print("no address")
 
-url = "https://www.apple.com/retail/cumberlandmall/"
 with open("scraped_data.json", "r") as file: urls = json.load(file)
 payload = [{"store_link": url, "address": get_address_and_phone(index, url)} for index, url in enumerate(urls)]
 
