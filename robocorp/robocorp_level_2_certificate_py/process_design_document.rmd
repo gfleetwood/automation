@@ -72,14 +72,6 @@ One of the best ways to show the steps of a process is via a flowchart, a widely
 ![](images/process_flow.png)
 ## Steps
 
-This section of the process definition document is the crucial one: here, you will break down the process into all its steps, and for each one, you will provide all the information needed.
-
-Try to imagine that you are explaining this to someone that knows nothing about the process: after they have read your instructions, they should be able to complete the process on their own.
-
-In the description of each step, you are free to add anything that you think will help explain it better: for example, screenshots of the user interface, the schema of the data involved, etc.
-
-A good name for a step for example is in the format operator-action-object of the action. For example: "Employee adds product to shopping cart".
-
 **Orders robots from RobotSpareBin Industries Inc.**
 
 **Saves the order HTML receipt as a PDF file**
@@ -89,10 +81,6 @@ A good name for a step for example is in the format operator-action-object of th
 **Embeds the screenshot of the robot to the PDF receipt**
 
 **Creates a ZIP archive of the receipts and the images**
-
-**Hold**
-
-Alethea
 
 # Possible Exceptions
 
