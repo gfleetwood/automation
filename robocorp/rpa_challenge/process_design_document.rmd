@@ -67,7 +67,7 @@ tibble::tribble(
 
 ![](images/process_flow.png)
 
-## Detailed Steps
+## Steps
 
 **User Downloads Excel File**
 

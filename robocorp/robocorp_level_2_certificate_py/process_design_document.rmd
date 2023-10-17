@@ -72,15 +72,38 @@ One of the best ways to show the steps of a process is via a flowchart, a widely
 ![](images/process_flow.png)
 ## Steps
 
-**Orders robots from RobotSpareBin Industries Inc.**
+**1. User Downloads And Opens CSV File**
 
-**Saves the order HTML receipt as a PDF file**
+The user downloads the csv from this url:
 
-**Saves the screenshot of the ordered robot**
+https://robotsparebinindustries.com/orders.csv
 
-**Embeds the screenshot of the robot to the PDF receipt**
+![](images/1_csv.png)
+**2. User Navigates To Robot Spare Bins Site And Clicks "Order your robot" Button**
 
-**Creates a ZIP archive of the receipts and the images**
+**3. User Closes Modal Popup**
+
+This can be closed by pressing any option besides "no way!".
+
+**5. User Clicks "show model info" Button**
+
+Clicking this button opens a table that allows the user to match the part number in the csv with the modal name.
+
+**6. User Enters A Row's Info Into The Form**
+
+**7. User Clicks "Order" Button**
+
+If the order is submitted the user moves on. If the user gets an error they re-click the Order button until the order goes through.
+
+**8. User Takes A Screenshot Of the Invoice**
+
+**9. User Converts The Screenshot To PDF**
+
+**10. User Repeats Order Process For All Rows In The CSV**
+
+To submit another order the user clicks "Order Another" and closes the same modal in step 4.
+
+**11. User Archives All Invoice PDFs To A Zip File**
 
 # Possible Exceptions
 
@@ -91,7 +114,5 @@ There are none.
 ## System Exceptions
 
 The order submission can fail at random but that is accounted for in the automation implementation.
-
-
 
 
