@@ -81,29 +81,44 @@ https://robotsparebinindustries.com/orders.csv
 ![](images/1_csv.png)
 **2. User Navigates To Robot Spare Bins Site And Clicks "Order your robot" Button**
 
+![](images/2_site.png)
+
 **3. User Closes Modal Popup**
 
 This can be closed by pressing any option besides "no way!".
 
-**5. User Clicks "show model info" Button**
+![](images/3_modal.png)
+
+**4. User Clicks "show model info" Button**
 
 Clicking this button opens a table that allows the user to match the part number in the csv with the modal name.
 
-**6. User Enters A Row's Info Into The Form**
+![](images/4_model_info.png)
+![](images/5_model_info.png)
 
-**7. User Clicks "Order" Button**
+**5. User Enters A Row's Info Into The Form And Clicks Order Button**
 
-If the order is submitted the user moves on. If the user gets an error they re-click the Order button until the order goes through.
+![](images/6_make_order.png)
 
-**8. User Takes A Screenshot Of the Invoice**
+If the order is submitted the user moves on. If the user gets an error as shown below they re-click the Order button until the order goes through.
 
-**9. User Converts The Screenshot To PDF**
+![](images/7_order_error.png)
 
-**10. User Repeats Order Process For All Rows In The CSV**
+**6. User Takes A Screenshot Of the Invoice**
 
-To submit another order the user clicks "Order Another" and closes the same modal in step 4.
+![](images/8_order_submitted.png)
 
-**11. User Archives All Invoice PDFs To A Zip File**
+**7. User Converts The Screenshot To PDF**
+
+The user creates a new pdf and adds the image of the invoice to it.
+
+**8. User Repeats Order Process For All Rows In The CSV**
+
+To submit another order the user clicks "Order Another", closes the same modal in step 3, and repeats Steps 4-7. 
+
+**9. User Archives All Invoice PDFs To A Zip File**
+
+Once all the pdfs of the invoices are ready the user compiles then into a zip file archive.
 
 # Possible Exceptions
 
